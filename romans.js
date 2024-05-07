@@ -1,7 +1,7 @@
 // Constants for the literals
-const INVALID_ROMAN = "Please enter a valid roman";
-const INVALID_INTEGER = "Please enter a valid integer";
-const OUT_OF_RANGE = "Out of range (1-3999)";
+var INVALID_ROMAN = "Please enter a valid roman";
+var INVALID_INTEGER = "Please enter a valid integer";
+var OUT_OF_RANGE = "Out of range (1-3999)";
 
 function init() { 
   
@@ -28,8 +28,8 @@ function init() {
   // 3 - Show error messages
   // This is cleaner and also removes code duplications
   convertButton.addEventListener("click", function() {
-  let inputValue = inputArea.value;
-  let convertion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
+  var inputValue = inputArea.value;
+  var convertion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
   if (convertion.result) {
     outputArea.innerHTML = convertion.value;
   } else {
@@ -46,20 +46,20 @@ function init() {
 // and an error message if needed
 function convertRomanToInteger(roman) {
 
-  let response = {
+  var response = {
   value: 0, 
   message: '',
   result: false 
   }
 
   // Regexp to check if a string is a valid roman number
-  const romanNumeralRegex = new RegExp(
+  var romanNumeralRegex = new RegExp(
   /^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/
   );
 
   // Convert the string to uppercase so we just to handle uppercase strings
   roman = roman.toUpperCase();
-  const regexResult = romanNumeralRegex.test(roman);
+  var regexResult = romanNumeralRegex.test(roman);
 
   // Either the string is not a valid roman number or is empty
   if (!regexResult || roman.length <= 0) {
@@ -67,9 +67,9 @@ function convertRomanToInteger(roman) {
   return response;
   }
 
-  let arr = ["I", "V", "X", "L", "C", "D", "M"];
+  var arr = ["I", "V", "X", "L", "C", "D", "M"];
 
-  let values = {
+  var values = {
   I: 1,
   V: 5,
   X: 10,
@@ -79,11 +79,11 @@ function convertRomanToInteger(roman) {
   M: 1000,
   };
 
-  let sum = 0;
+  var sum = 0;
 
-  let prevIndex = 0;
+  var prevIndex = 0;
 
-  for (let i = roman.length - 1; i >= 0; i--) {
+  for (var i = roman.length - 1; i >= 0; i--) {
   if (arr.indexOf(roman[i]) >= prevIndex) {
     sum = sum + values[roman[i]];
   } else {
@@ -106,16 +106,16 @@ function convertRomanToInteger(roman) {
 // and an error message if needed
 function convertIntegerToRoman(num) {
 
-  let response = {
+  var response = {
   value: 0,
   message: '', 
   result: false 
   }
 
   // Regexp to check the input is a valid integer
-  const numberRegex = new RegExp(/^\d+$/);
+  var numberRegex = new RegExp(/^\d+$/);
 
-  const regexResult = numberRegex.test(num);
+  var regexResult = numberRegex.test(num);
 
   // Not an integer -> we exit with the appropriate message
   if (!regexResult) {
@@ -129,7 +129,7 @@ function convertIntegerToRoman(num) {
   return response;   
   }
 
-  const mapping = {
+  var mapping = {
   1: "I",
   5: "V",
   10: "X",
@@ -139,10 +139,10 @@ function convertIntegerToRoman(num) {
   1000: "M",
   };
 
-  let count = 1;
-  let str = "";
+  var count = 1;
+  var str = "";
   while (num > 0) {
-  let last = parseInt(num % 10);
+  var last = parseInt(num % 10);
   last *= count;
   if (last < 10) {
     str += lessThan9(last, mapping);
