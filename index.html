@@ -1,22 +1,47 @@
 <html>
   <head>
-    <script src="romans.js"></script>
-    <link rel="stylesheet" href="romans.css">
-  </head>
-  <body onload="init()">
-    <main class="container">
-      <section class="content">
-        <h1>Roman To Integer</h1>
-        <div class="group">
-          <input type="checkbox" name="mode-selector" />
-          <label for="mode-selector">Change Mode</label>
-        </div>
-        <div class="group">
-          <input type="text" name="conversion-input" />
-        </div>
-        <span class="convert-button">Convert</span>
-        <p class="convert-output"></p>
-      </section>
-    </main>
-  </body>
+  <script src="triangle.js"></script> 
+  <script>
+    /*
+     * Gets the lenghts of the sides of the triangle from the HTML elements
+     * calculates the type of triangle and shows the type on the page
+     */
+    function chekTriangleType() {
+      // Get the lengths of the sides from the UI
+      let a = document.getElementById("input-a").value;
+      let b = document.getElementById("input-b").value;
+      let c = document.getElementById("input-c").value;
+
+      // Calculate the type of Triangle
+      triangleType = getTriangleType(a, b, c);
+      // Shows the type of Triangle in the web site
+      displayTriangleType(triangleType);
+    }
+
+    /*
+     * Updates the HTML element result with the passed argument 
+     * (used for the triangle type)
+     */
+    function displayTriangleType(type) {
+      document.getElementById("result").innerHTML = '<b>Result</b> ' + type;
+    }
+
+    </script>
+    </head>
+    <body>
+        <h1> Calculate Triangle Type </h1>
+        <p>
+        Length of Side A <input name="input-a" id="input-a" value="1"> </input>
+        </p>
+        <p>
+        Length of Side B <input name="input-b" id="input-b" value="1"> </input>
+        </p>
+        <p>
+        Length of Side C <input name="input-c" id="input-c" value="1"> </input>
+        </p>
+        <p>
+        <button name='button-calculate' onclick='javascript:chekTriangleType()'> Calculate </button>
+        </p>
+        <div id="result">  </div>
+    </body>
 </html>
