@@ -31,11 +31,12 @@ function init() {
     let inputValue = inputArea.value;
     let convertion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
     if (convertion.result) {
-      outputArea.innerHTML = convertion.value;
+        outputArea.innerHTML = convertion.value;
     } else {
-      alert(convertion.message);
+        alert(convertion.message);
     }
-  });
+});
+
 
 };
 
