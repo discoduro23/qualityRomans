@@ -162,13 +162,13 @@ function convertIntegerToRoman(num) {
 
 function lessThan9(num, obj) {
   if (num === 9) {
-  return obj[1] + obj[10];
+    return obj[1] + obj[10];
   } else if (num >= 5 && num < 9) {
-  return obj[5] + obj[1].repeat(num % 5);
+    return obj[5] + String(obj[1]).repeat(num % 5);
   } else if (num === 4) {
-  return obj[1] + obj[5];
+    return obj[1] + obj[5];
   } else {
-  return obj[1].repeat(num);
+    return String(obj[1]).repeat(num);
   }
 }
 
@@ -213,11 +213,11 @@ function greaterThan9(num, obj) {
   } else {
     return obj[500] + obj[100].repeat(parseInt(num - 500) / 100);
   }
-  } else if (num >= 1000 && num < 5000) {
-  if (num === 1000) {
-    return obj[1000];
-  }
+  }  else if (num >= 1000 && num < 5000) {
+    if (num === 1000) {
+      return obj[1000];
+    }
 
-  return obj[1000].repeat(parseInt(num / 1000));
+    return String(obj[1000]).repeat(parseInt(num / 1000));
   }
 }
