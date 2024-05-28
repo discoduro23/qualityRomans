@@ -2,14 +2,13 @@
   <head>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FZVNP8MQCV"></script>
+<script  src="romans.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-FZVNP8MQCV');
-
- 
 
   function init() { 
   
@@ -40,12 +39,16 @@
     var convertion = modeCheckbox.checked ? convertIntegerToRoman(inputValue) : convertRomanToInteger(inputValue);
     if (convertion.result) {
       outputArea.innerHTML = convertion.value;
+      gtag('event', 'convertion_calculated', {
+        'convert_value' : convertion.value
+        });
     } else {
       alert(convertion.message);
     }
   });
-}
 
+
+  
 // Now the convertion methods receive both an input argument instead
 // of reading directly from the UI.
 // On top of that, they return a JSON object instead of updating the
@@ -103,12 +106,12 @@ for (var i = roman.length - 1; i >= 0; i--) {
 response.value = sum;
 response.result = true;
 
-gtag('event', 'convert_to_int_value', {
-        'value' : response.value
+gtag('event', 'convert_to_roman_value', {
+        'int_value' : response.value
         });
 
-gtag('event', 'convert_to_int_count', {
-        'intUsed' : true
+gtag('event', 'convert_to_roman_count', {
+        'romanUsed' : true
         });
 
 return response;
@@ -173,7 +176,7 @@ response.value = str;
 response.result = true;
 
 gtag('event', 'convert_to_roman_value', {
-        'value' : response.value
+        'int_value' : response.value
         });
 
 gtag('event', 'convert_to_roman_count', {
@@ -182,9 +185,8 @@ gtag('event', 'convert_to_roman_count', {
 
 return response;
 };
-
+}
 </script>
-<script  src="romans.js"></script>
     <link rel="stylesheet" href="romans.css">
   </head>
   <body onload="init()">
