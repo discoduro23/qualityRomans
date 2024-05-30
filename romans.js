@@ -1,19 +1,9 @@
 /* global gtag */
 
-// Include the gtag initialization directly in romans.js
-if (typeof gtag === 'undefined' && typeof window.dataLayer === 'undefined') {
-  window.dataLayer = [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-FZVNP8MQCV');
-}
-
 // Constants for the literals
 const INVALID_ROMAN = 'Please enter a valid roman';
 const INVALID_INTEGER = 'Please enter a valid integer';
 const OUT_OF_RANGE = 'Out of range (1-3999)';
-
-
 
 function init() {
 
