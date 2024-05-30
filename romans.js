@@ -39,6 +39,9 @@ function init() {
       });
     } else {
       alert(convertion.message);
+      gtag('event', 'convertion_error_msg', {
+        'convert_error_msg': convertion.message
+      });
     }
   });
 }
@@ -101,14 +104,6 @@ const convertRomanToInteger = function (roman) {
   response.value = sum;
   response.result = true;
 
-  gtag('event', 'convert_to_roman_value', {
-    'int_value': response.value
-  });
-
-  gtag('event', 'convert_to_roman_count', {
-    'romanUsed': true
-  });
-
   return response;
 };
 
@@ -169,14 +164,6 @@ const convertIntegerToRoman = function (num) {
 
   response.value = str;
   response.result = true;
-
-  gtag('event', 'convert_to_roman_value', {
-    'int_value': response.value
-  });
-
-  gtag('event', 'convert_to_roman_count', {
-    'romanUsed': true
-  });
 
   return response;
 };
