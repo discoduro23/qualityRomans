@@ -1,8 +1,8 @@
 /* global gtag */
 
 // Include the gtag initialization directly in romans.js
-if (typeof gtag === 'undefined') {
-  window.dataLayer = window.dataLayer || [];
+if (typeof gtag === 'undefined' && typeof window.dataLayer === 'undefined') {
+  window.dataLayer = [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-FZVNP8MQCV');
